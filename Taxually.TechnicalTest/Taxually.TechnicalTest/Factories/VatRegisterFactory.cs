@@ -9,11 +9,11 @@ public class VatRegisterFactory
         switch (countryCode)
         {
             case "GB":
-                return new HttpVatRegister();
+                return new HttpVatRegister(new TaxuallyHttpClient());
             case "FR":
-                return new CsvVatRegister();
+                return new CsvVatRegister(new TaxuallyQueueClient());
             case "DE":
-                return new XmlVatRegister();
+                return new XmlVatRegister(new TaxuallyQueueClient());
 
             default:
                 throw new Exception("Country not supported");

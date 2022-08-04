@@ -4,12 +4,11 @@ namespace Taxually.TechnicalTest.Factories;
 
 public class HttpVatRegister : IVatRegister
 {
-    private readonly TaxuallyHttpClient _httpClient;
+    private readonly ITaxuallyHttpClient _httpClient;
 
-    public HttpVatRegister()
+    public HttpVatRegister(ITaxuallyHttpClient httpClient)
     {
-        // TODO we can use constructor Dependency Injection and inject the queue client
-        _httpClient = new TaxuallyHttpClient();
+        _httpClient = httpClient;
     }
 
     public Task Register(IVatRegistrationModel model)

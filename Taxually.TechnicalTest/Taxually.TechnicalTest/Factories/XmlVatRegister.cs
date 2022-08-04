@@ -6,18 +6,24 @@ namespace Taxually.TechnicalTest.Factories;
 
 public class XmlVatRegister : IVatRegister
 {
+    private ITaxuallyQueueClient _xmlQueueClient;
+
+    public XmlVatRegister(ITaxuallyQueueClient xmlQueueClient)
+    {
+        _xmlQueueClient = xmlQueueClient;
+    }
+
+
     public Task Register(IVatRegistrationModel model)
     {
         using (var stringwriter = new StringWriter())
         {
             var serializer = new XmlSerializer(typeof(VatRegistrationModel));
-            serializer.Serialize(stringwriter, this);
+            serializer.Serialize(stringwriter,model);
             var xml = stringwriter.ToString();
-            // TODO we can use constructor Dependency Injection and inject the queue client
-            var xmlQueueClient = new TaxuallyQueueClient();
             // Queue xml doc to be processed
             // TODO move queue name to appsettings
-            return xmlQueueClient.EnqueueAsync("vat-registration-xml", xml);
+            return _xmlQueueClient.EnqueueAsync("vat-registration-xml", xml);
         }
     }
 }
