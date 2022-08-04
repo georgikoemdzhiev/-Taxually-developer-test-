@@ -32,7 +32,7 @@ namespace Taxually.TechnicalTest.Controllers
         public async Task<ActionResult> Post([FromBody] VatRegistrationModel model)
         {
             // the client must send country code
-            if (model.Country == null && !_supportedCountryCodes.Contains(model.Country)) return new BadRequestResult();
+            if (model.Country == null || !_supportedCountryCodes.Contains(model.Country)) return new BadRequestResult();
 
             var vatRegister = _vatRegisterFactory.GetVatRegister(model.Country);
             try
