@@ -12,10 +12,15 @@ namespace Taxually.TechnicalTest.Controllers
     [ApiController]
     public class VatRegistrationController : ControllerBase
     {
+        private readonly IConfiguration _configuration;
         private readonly VatRegisterFactory _vatRegisterFactory;
+        private readonly string[] _supportedCountryCodes;
 
-        public VatRegistrationController()
+        public VatRegistrationController(IConfiguration configuration)
         {
+            _configuration = configuration;
+            _supportedCountryCodes = _configuration.GetValue<string>("SupportedCountryCodes").Split(',');
+            
             // TODO use Dependency Injection here
             _vatRegisterFactory = new VatRegisterFactory();
         }
@@ -27,7 +32,7 @@ namespace Taxually.TechnicalTest.Controllers
         public async Task<ActionResult> Post([FromBody] VatRegistrationModel model)
         {
             // the client must send country code
-            if (model.Country == null) return new BadRequestResult();
+            if (model.Country == null && !_supportedCountryCodes.Contains(model.Country)) return new BadRequestResult();
 
             var vatRegister = _vatRegisterFactory.GetVatRegister(model.Country);
             try
