@@ -2,7 +2,7 @@ using Taxually.TechnicalTest.Interfaces;
 
 namespace Taxually.TechnicalTest.Models;
 
-public class VatRegistrationModel : IVatRegistrationModel
+public class VatRegistrationModel
 {
     public string? CompanyName { get; set; }
     public string? CompanyId { get; set; }

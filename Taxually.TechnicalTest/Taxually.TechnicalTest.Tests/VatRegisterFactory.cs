@@ -21,7 +21,7 @@ public class Tests
         // Arrange
         var countryCode = "GB";
         var xmlRegister = _vatRegisterFactory.GetVatRegister(countryCode);
-        IVatRegistrationModel model = new MockVatRegistrationModel{Country = countryCode};
+        var model = new VatRegistrationModel{Country = countryCode};
 
         // Act
         var actual = xmlRegister.Register(model);
@@ -36,7 +36,7 @@ public class Tests
         // Arrange
         var countryCode = "FR";
         var csvRegister = _vatRegisterFactory.GetVatRegister(countryCode);
-        IVatRegistrationModel model = new MockVatRegistrationModel{Country = countryCode};
+        var model = new VatRegistrationModel{Country = countryCode};
 
         // Act
         var actual = csvRegister.Register(model);
@@ -51,7 +51,7 @@ public class Tests
         // Arrange
         var countryCode = "DE";
         var xmlRegister = _vatRegisterFactory.GetVatRegister(countryCode);
-        IVatRegistrationModel model = new MockVatRegistrationModel{Country = countryCode};
+        var model = new VatRegistrationModel{Country = countryCode};
 
         // Act
         var actual = xmlRegister.Register(model);

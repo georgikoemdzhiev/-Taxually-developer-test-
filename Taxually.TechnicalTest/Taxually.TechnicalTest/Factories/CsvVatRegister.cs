@@ -11,7 +11,7 @@ public class CsvVatRegister : IVatRegister
     {
         this._queueClient = queueClient;
     }
-    public Task Register(IVatRegistrationModel model)
+    public Task Register(VatRegistrationModel model)
     {
         var csvBuilder = new StringBuilder();
         csvBuilder.AppendLine("CompanyName,CompanyId");

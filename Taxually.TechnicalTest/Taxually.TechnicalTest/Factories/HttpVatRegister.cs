@@ -1,4 +1,5 @@
 using Taxually.TechnicalTest.Interfaces;
+using Taxually.TechnicalTest.Models;
 
 namespace Taxually.TechnicalTest.Factories;
 
@@ -11,7 +12,7 @@ public class HttpVatRegister : IVatRegister
         _httpClient = httpClient;
     }
 
-    public Task Register(IVatRegistrationModel model)
+    public Task Register(VatRegistrationModel model)
     {
         // TODO move URL to appsettings
         return _httpClient.PostAsync("https://api.uktax.gov.uk", model);

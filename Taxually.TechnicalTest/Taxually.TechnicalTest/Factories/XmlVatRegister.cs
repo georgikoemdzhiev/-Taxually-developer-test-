@@ -14,7 +14,7 @@ public class XmlVatRegister : IVatRegister
     }
 
 
-    public Task Register(IVatRegistrationModel model)
+    public Task Register(VatRegistrationModel model)
     {
         using (var stringwriter = new StringWriter())
         {
