@@ -1,8 +1,9 @@
 using System.Text;
+using Taxually.TechnicalTest.Factories;
 using Taxually.TechnicalTest.Interfaces;
 using Taxually.TechnicalTest.Models;
 
-namespace Taxually.TechnicalTest.Factories;
+namespace Taxually.TechnicalTest.VatRegisters;
 
 public class CsvVatRegister : IVatRegister
 {

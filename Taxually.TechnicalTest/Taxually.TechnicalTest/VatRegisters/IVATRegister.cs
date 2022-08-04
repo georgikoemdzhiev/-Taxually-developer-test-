@@ -1,6 +1,6 @@
 using Taxually.TechnicalTest.Models;
 
-namespace Taxually.TechnicalTest.Factories;
+namespace Taxually.TechnicalTest.VatRegisters;
 
 public interface IVatRegister
 {

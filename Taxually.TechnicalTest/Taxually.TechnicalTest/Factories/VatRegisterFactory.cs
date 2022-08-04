@@ -1,4 +1,6 @@
+using Taxually.TechnicalTest.DataClients;
 using Taxually.TechnicalTest.Models;
+using Taxually.TechnicalTest.VatRegisters;
 
 namespace Taxually.TechnicalTest.Factories;
 

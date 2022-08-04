@@ -2,7 +2,7 @@ using System.Xml.Serialization;
 using Taxually.TechnicalTest.Interfaces;
 using Taxually.TechnicalTest.Models;
 
-namespace Taxually.TechnicalTest.Factories;
+namespace Taxually.TechnicalTest.VatRegisters;
 
 public class XmlVatRegister : IVatRegister
 {
