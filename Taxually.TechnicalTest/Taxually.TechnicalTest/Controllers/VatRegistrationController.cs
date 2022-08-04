@@ -20,7 +20,7 @@ namespace Taxually.TechnicalTest.Controllers
         {
             _configuration = configuration;
             _supportedCountryCodes = _configuration.GetValue<string>("SupportedCountryCodes").Split(',');
-            
+
             // TODO use Dependency Injection here
             _vatRegisterFactory = new VatRegisterFactory();
         }

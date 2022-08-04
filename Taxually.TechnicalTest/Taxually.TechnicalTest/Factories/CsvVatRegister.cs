@@ -1,11 +1,12 @@
 using System.Text;
+using Taxually.TechnicalTest.Interfaces;
 using Taxually.TechnicalTest.Models;
 
 namespace Taxually.TechnicalTest.Factories;
 
 public class CsvVatRegister : IVatRegister
 {
-    public Task Register(VatRegistrationModel model)
+    public Task Register(IVatRegistrationModel model)
     {
         var csvBuilder = new StringBuilder();
         csvBuilder.AppendLine("CompanyName,CompanyId");
