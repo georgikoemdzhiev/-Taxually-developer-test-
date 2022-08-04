@@ -14,6 +14,7 @@ public class XmlVatRegister : IVatRegister
             var xml = stringwriter.ToString();
             var xmlQueueClient = new TaxuallyQueueClient();
             // Queue xml doc to be processed
+            // TODO move queue name to appsettings
             return xmlQueueClient.EnqueueAsync("vat-registration-xml", xml);
         }
     }
