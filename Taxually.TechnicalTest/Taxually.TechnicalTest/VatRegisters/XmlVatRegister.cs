@@ -16,14 +16,19 @@ public class XmlVatRegister : IVatRegister
 
     public Task Register(VatRegistrationModel model)
     {
+        var payload = BuildPayload(model);
+        // Queue xml doc to be processed
+        // TODO move queue name to appsettings
+        return _xmlQueueClient.EnqueueAsync("vat-registration-xml", payload);
+    }
+
+    private string BuildPayload(VatRegistrationModel model)
+    {
         using (var stringwriter = new StringWriter())
         {
             var serializer = new XmlSerializer(typeof(VatRegistrationModel));
-            serializer.Serialize(stringwriter,model);
-            var xml = stringwriter.ToString();
-            // Queue xml doc to be processed
-            // TODO move queue name to appsettings
-            return _xmlQueueClient.EnqueueAsync("vat-registration-xml", xml);
+            serializer.Serialize(stringwriter, model);
+            return stringwriter.ToString();
         }
     }
 }
